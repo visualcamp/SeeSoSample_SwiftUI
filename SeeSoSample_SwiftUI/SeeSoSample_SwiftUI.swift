@@ -10,12 +10,12 @@ import SwiftUI
 
 @main
 struct SeeSoSample_SwiftUI: App {
-    @StateObject private var model = SeeSoModel()
-    
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .environmentObject(model)
-        }
+  @StateObject private var model = SeeSoModel()
+  
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
+        .environmentObject(model)
     }
+  }
 }

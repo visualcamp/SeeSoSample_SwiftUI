@@ -9,13 +9,13 @@
 import Foundation
 
 enum TrackerInitState {
-    case `default`
-    case initializing
-    case succeed
-    case failed
+  case `default`
+  case initializing
+  case succeed
+  case failed
 }
 enum EyeTrackingState {
-    case started
-    case stopped
+  case started
+  case stopped
 }
 
