@@ -15,7 +15,6 @@
 		F92405B0283CDE120086BD10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92405AF283CDE120086BD10 /* ContentView.swift */; };
 		F92405B5283CDE500086BD10 /* SeeSo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92405B4283CDE500086BD10 /* SeeSo.framework */; };
 		F92405B6283CDE500086BD10 /* SeeSo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F92405B4283CDE500086BD10 /* SeeSo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F984D75F283DF4800049F242 /* GazePointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F984D75E283DF4800049F242 /* GazePointView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,7 +40,6 @@
 		63FB638727100DC8005B72BA /* enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = enum.swift; sourceTree = "<group>"; };
 		F92405AF283CDE120086BD10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F92405B4283CDE500086BD10 /* SeeSo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SeeSo.framework; sourceTree = "<group>"; };
-		F984D75E283DF4800049F242 /* GazePointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GazePointView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				F92405AF283CDE120086BD10 /* ContentView.swift */,
-				F984D75B283DF4250049F242 /* Helper */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -117,14 +114,6 @@
 				63FB638727100DC8005B72BA /* enum.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		F984D75B283DF4250049F242 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				F984D75E283DF4800049F242 /* GazePointView.swift */,
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,7 +190,6 @@
 				F92405B0283CDE120086BD10 /* ContentView.swift in Sources */,
 				63FB638827100DC8005B72BA /* SeeSoModel.swift in Sources */,
 				63FB638A27100DC8005B72BA /* enum.swift in Sources */,
-				F984D75F283DF4800049F242 /* GazePointView.swift in Sources */,
 				63FB637827100D7E005B72BA /* SeeSoSample_SwiftUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,7 +340,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "camp.visual.ios.demo.seeso-demo-swiftui";
+				PRODUCT_BUNDLE_IDENTIFIER = camp.visual.ios.sample.SeeSo.Swiftui;
 				PRODUCT_NAME = SeeSo_Sample_iOS_swiftUI;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -387,7 +375,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "camp.visual.ios.demo.seeso-demo-swiftui";
+				PRODUCT_BUNDLE_IDENTIFIER = camp.visual.ios.sample.SeeSo.Swiftui;
 				PRODUCT_NAME = SeeSo_Sample_iOS_swiftUI;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
