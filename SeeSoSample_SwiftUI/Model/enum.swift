@@ -14,7 +14,7 @@ enum TrackerInitState {
   case succeed
   case failed
 }
-enum EyeTrackingState {
+enum GazeTrackingState {
   case started
   case stopped
 }

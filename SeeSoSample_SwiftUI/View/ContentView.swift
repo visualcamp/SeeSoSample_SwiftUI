@@ -13,6 +13,7 @@ import SeeSo
 struct ContentView: View {
   @EnvironmentObject var model: SeeSoModel
   var calibrationType: [CalibrationMode] = [.ONE_POINT, .FIVE_POINT]
+  @State var isOpened: Bool = true
   
   var body: some View {
     ZStack {
@@ -20,73 +21,113 @@ struct ContentView: View {
         VStack {
           Divider()
             .padding(15)
-          Text("Follow steps below to experience eye tracking.")
+          
+          Text(GUIDE_MAIN)
             .multilineTextAlignment(.center)
-            .navigationTitle("SeeSo Sample")
+            .navigationTitle(APP_TITLE)
+          
           List {
             if !model.isCameraAccessAllowed {
-              Section(header:Text("We must have camera permission!")) {
-                Text("Allow camera use authorization.")
+              
+              Section(header:Text(GUIDE_CAMERA_AUTH)) {
+                Text(LIST_CAMERA_AUTH)
                   .onTapGesture {
                     DispatchQueue.main.async {
                       model.initGazeTracker()
                     }
                   }
               }.textCase(nil)
+              
             } else {
+              
               Section(
-                header:Text(model.initState != .succeed ? "You need to init GazeTracker first." : "GazeTracker is activated!"),
-                footer: (model.initState == .succeed && !model.isInitWithUserOption) ? Text("You can init GazeTracker With UserOption!\n(need to restart GazeTraker)") : nil
-              ){
+                header: model.initBtnHeaderText,
+                footer: model.initBtnFooter
+              ) {
                 if model.initState != .succeed {
-                  Text("Initialize GazeTracker")
+                  
+                  Text(LIST_INIT_STOPPED)
                     .onTapGesture {
                       DispatchQueue.main.async {
                         model.initGazeTracker()
                       }
                     }
+                  Toggle(isOn: $model.isInitWithUserOption) {
+                    Text(LIST_INIT_WITH_USER_OPTION)
+                  }
+                  
                 } else {
-                  Text("Stop GazeTracker")
+                  
+                  Text(LIST_INIT_STARTED)
                     .onTapGesture {
                       DispatchQueue.main.async {
                         model.deinitGazeTracker()
                       }
                     }
-                  
                 }
               }.textCase(nil)
               
               if model.initState == .succeed {
-                Section(header:Text(model.isEyeTracking ? "Tracking is On!!" : "Now You can track your gaze!")) {
-                  Text(model.isEyeTracking ? "Stop tracking" : "Start tracking.")
+                
+                Section(header: model.trackBtnHeader) {
+                  Text(model.trackBtnTitle)
                     .onTapGesture {
                       DispatchQueue.main.async {
-                        model.isEyeTracking ? model.stopTracking() : model.startTracking()
+                        model.toggleTracking()
                       }
                     }
                 }.textCase(nil)
                 
-                if model.isEyeTracking {
+                if model.isGazeTracking {
+                  
                   Section(
-                    header: Text("And also you can improve accuracy through calibration.") ,
-                    footer: model.isCalibrating ? nil : Text("(Calibration only can be done while gaze tracking is activated)")
-                  ) {
-                    Text(model.isCalibrating ? "Calibration started!" : "Start Calibration")
+                    header: Text(HEADER_CALIB) ,
+                    footer: model.caliBtnFooter
+                  ){
+                    
+                    Text(model.calibBtnTitle)
                       .onTapGesture {
-                        model.isCalibrating ? model.stopCalibration() : model.startCalibration()
+                        model.toggleCalibrtation()
                       }
+                    
                     if !model.isCalibrating {
+                      
                       HStack {
-                        Text("Calibration Type")
+                        Text(PICKER_CALIB)
                         Picker("type pick",selection: $model.caliMode) {
                           ForEach(calibrationType, id: \.self) {
                             Text($0.description)
                           }
                         }
                         .pickerStyle(.segmented)
+                        
                       }
                     }
                   }.textCase(nil)
+                  
+                  if model.isInitWithUserOption {
+                    Section {
+                      DisclosureGroup() {
+                        HStack {
+                          Text("Attention score of recent \(model.customAttentionInterval)s")
+                          Spacer()
+                          Text("\(model.userOptions.recentAttentionScore)%")
+                        }
+                        HStack {
+                          Text(TITLE_USER_OPTION_BLINK)
+                          Spacer()
+                          Text("\(model.userOptions.blinked ? "Ȕ _ Ű" : "Ȍ _ Ő")")
+                        }
+                        HStack {
+                          Text(TITLE_USER_OPTION_SLEEPY)
+                          Spacer()
+                          Text(model.userOptions.isSleepy ? "Yes.." : "Nope!")
+                        }
+                      } label: {
+                        Text(TITLE_USER_OPTION)
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -94,6 +135,7 @@ struct ContentView: View {
           
         }
       }
+      
       if model.initState == .initializing {
         ZStack {
           Color
@@ -105,12 +147,16 @@ struct ContentView: View {
             .scaleEffect(4)
         }
       }
-      if model.isEyeTracking && !model.isCalibrating {
+      
+      // Gaze Track Icon
+      if model.isGazeTracking && !model.isCalibrating {
         Circle()
           .strokeBorder(Color.red,lineWidth: 3)
           .frame(width: 25, height: 25)
           .position(x: model.gazePoint.0, y: model.gazePoint.1)
       }
+      
+      // Calibrating Progress Icon
       if model.isCalibrating {
         ZStack {
           Color
@@ -125,7 +171,7 @@ struct ContentView: View {
           }
           .position(x: model.caliPosition.0,
                     y: model.caliPosition.1)
-          Text("Look at the circle!")
+          Text(GUIDE_CALIB)
         }
         
       }
