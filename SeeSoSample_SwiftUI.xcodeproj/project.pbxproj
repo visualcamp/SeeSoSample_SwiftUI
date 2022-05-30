@@ -16,6 +16,12 @@
 		F92405B5283CDE500086BD10 /* SeeSo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92405B4283CDE500086BD10 /* SeeSo.framework */; };
 		F92405B6283CDE500086BD10 /* SeeSo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F92405B4283CDE500086BD10 /* SeeSo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F94D3F872840A39800E219ED /* UserOptionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D3F862840A39800E219ED /* UserOptionsModel.swift */; };
+		F94D3F9C2844999C00E219ED /* GazeTrackerIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D3F9B2844999C00E219ED /* GazeTrackerIcon.swift */; };
+		F94D3F9E284499C400E219ED /* CalibrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D3F9D284499C400E219ED /* CalibrationView.swift */; };
+		F94D3FA0284499FF00E219ED /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D3F9F284499FF00E219ED /* LoadingView.swift */; };
+		F94D3FA328449A3C00E219ED /* UserOptionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D3FA228449A3C00E219ED /* UserOptionSection.swift */; };
+		F94D3FA528449B4000E219ED /* CalibrationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D3FA428449B4000E219ED /* CalibrationSection.swift */; };
+		F94D3FA72844B3B100E219ED /* DetailUserInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D3FA62844B3B100E219ED /* DetailUserInfoSection.swift */; };
 		F984D76D283F698B0049F242 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F984D76C283F698B0049F242 /* String.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +49,12 @@
 		F92405AF283CDE120086BD10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F92405B4283CDE500086BD10 /* SeeSo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SeeSo.framework; sourceTree = "<group>"; };
 		F94D3F862840A39800E219ED /* UserOptionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOptionsModel.swift; sourceTree = "<group>"; };
+		F94D3F9B2844999C00E219ED /* GazeTrackerIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GazeTrackerIcon.swift; sourceTree = "<group>"; };
+		F94D3F9D284499C400E219ED /* CalibrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationView.swift; sourceTree = "<group>"; };
+		F94D3F9F284499FF00E219ED /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		F94D3FA228449A3C00E219ED /* UserOptionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOptionSection.swift; sourceTree = "<group>"; };
+		F94D3FA428449B4000E219ED /* CalibrationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationSection.swift; sourceTree = "<group>"; };
+		F94D3FA62844B3B100E219ED /* DetailUserInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserInfoSection.swift; sourceTree = "<group>"; };
 		F984D76C283F698B0049F242 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,10 +115,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F94D3F9A2844997E00E219ED /* HelperViews */ = {
+			isa = PBXGroup;
+			children = (
+				F94D3F9B2844999C00E219ED /* GazeTrackerIcon.swift */,
+				F94D3F9D284499C400E219ED /* CalibrationView.swift */,
+				F94D3F9F284499FF00E219ED /* LoadingView.swift */,
+			);
+			path = HelperViews;
+			sourceTree = "<group>";
+		};
+		F94D3FA128449A2F00E219ED /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				F94D3FA428449B4000E219ED /* CalibrationSection.swift */,
+				F94D3FA228449A3C00E219ED /* UserOptionSection.swift */,
+				F94D3FA62844B3B100E219ED /* DetailUserInfoSection.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
 		F984D759283DF3E10049F242 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				F92405AF283CDE120086BD10 /* ContentView.swift */,
+				F94D3FA128449A2F00E219ED /* Section */,
+				F94D3F9A2844997E00E219ED /* HelperViews */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,11 +228,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F92405B0283CDE120086BD10 /* ContentView.swift in Sources */,
+				F94D3FA528449B4000E219ED /* CalibrationSection.swift in Sources */,
+				F94D3FA328449A3C00E219ED /* UserOptionSection.swift in Sources */,
 				63FB638827100DC8005B72BA /* SeeSoModel.swift in Sources */,
+				F94D3F9C2844999C00E219ED /* GazeTrackerIcon.swift in Sources */,
+				F94D3F9E284499C400E219ED /* CalibrationView.swift in Sources */,
 				F984D76D283F698B0049F242 /* String.swift in Sources */,
 				63FB638A27100DC8005B72BA /* enum.swift in Sources */,
 				63FB637827100D7E005B72BA /* SeeSoSample_SwiftUI.swift in Sources */,
+				F94D3FA72844B3B100E219ED /* DetailUserInfoSection.swift in Sources */,
 				F94D3F872840A39800E219ED /* UserOptionsModel.swift in Sources */,
+				F94D3FA0284499FF00E219ED /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

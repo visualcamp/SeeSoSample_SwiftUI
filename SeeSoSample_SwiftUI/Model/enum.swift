@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  enum.swift
 //  SeeSoSample_SwiftUI
 //
 //  Created by VisualCamp on 2022/05/25.

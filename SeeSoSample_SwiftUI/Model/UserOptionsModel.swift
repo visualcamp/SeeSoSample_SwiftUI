@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  UserOptionsModel.swift
 //  SeeSoSample_SwiftUI
 //
 //  Created by VisualCamp on 2022/05/25.
@@ -23,7 +23,7 @@ struct UserOptionsModel {
 }
 
 struct AttentionModel {
-  var asdf:Bool
+  var score:Double
 }
 struct BlinkModel {
   var isBlinkLeft:Bool

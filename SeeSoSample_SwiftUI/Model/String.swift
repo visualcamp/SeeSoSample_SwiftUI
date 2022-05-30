@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  String.swift
 //  SeeSoSample_SwiftUI
 //
 //  Created by VisualCamp on 2022/05/25.
@@ -38,8 +38,16 @@ public var PICKER_CALIB = "Calibration Type"
 public var GUIDE_CALIB = "Look at the circle!"
 
 // User Options
-
-public var TITLE_USER_OPTION = "Detail User Options Info"
+public var TITLE_USER_OPTION = "User Options Info"
 public var TITLE_USER_OPTION_BLINK = "Blink State"
 public var TITLE_USER_OPTION_SLEEPY = "Do I look sleepy now..?"
+public var TITLE_USER_OPTION_DETAIL = "Show Detail Info\n(it may cause lagging!)"
+
+// Example for User Info Data Control
+public var TITLE_EXAMPLE_AVE_ATT_SCORE = "average attention score"
+public var TITLE_EXAMPLE_AVE_ATT_COUNT = "attention check count"
+public var TITLE_EXAMPLE_LEFT_BLINK_COUNT = "left only blink count"
+public var TITLE_EXAMPLE_RIGHT_BLINK_COUNT = "right only blink count"
+public var TITLE_EXAMPLE_BLINK_COUNT = "both blink count"
+public var TITLE_EXAMPLE_EYE_OPENNESS = "everage eye Opennes"
 

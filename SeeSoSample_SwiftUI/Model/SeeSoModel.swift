@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SeeSoModel.swift
 //  SeeSoSample_SwiftUI
 //
 //  Created by VisualCamp on 2022/05/25.
@@ -38,6 +38,7 @@ final class SeeSoModel: ObservableObject {
   var customAttentionInterval: Int = 10
   @Published var userOptions = UserOptionsModel.default
   private var blinking: Bool = false
+  @Published var isDetailOptionOn:Bool = false
   
   func initGazeTracker() {
     if isCameraAccessAllowed {
@@ -111,27 +112,6 @@ final class SeeSoModel: ObservableObject {
     }
   }
 }
-// MARK: - String Helper
-extension SeeSoModel {
-  var initBtnHeaderText: Text {
-    return Text(initState != .succeed ? HEADER_INIT_STOPPED : isInitWithUserOption ? HEADER_INIT_STARTED_WITH_OPTION : HEADER_INIT_STARTED)
-  }
-  var initBtnFooter: Text? {
-    return (initState == .succeed && !isInitWithUserOption) ? Text( FOOTER_INIT_NO_OPTION) : nil
-  }
-  var trackBtnHeader: Text {
-    return Text(isGazeTracking ? HEADER_TRACK_STARTED : HEADER_TRACK_STOPPED)
-  }
-  var trackBtnTitle: String {
-    return isGazeTracking ? LIST_TRACK_STARTED : LIST_TRACK_STOPPED
-  }
-  var caliBtnFooter: Text? {
-    return isCalibrating ? nil : Text(FOOTER_CALIB)
-  }
-  var calibBtnTitle: String {
-    return isCalibrating ? LIST_CALIB_STARTED : LIST_CALIB_STOPPED
-  }
-}
 // MARK: - Initial Delegate
 extension SeeSoModel: InitializationDelegate {
   func onInitialized(tracker: GazeTracker?, error: InitializationError) {
@@ -179,18 +159,38 @@ extension SeeSoModel: StatusDelegate {
 extension SeeSoModel: UserStatusDelegate {
   func onAttention(timestampBegin: Int, timestampEnd: Int, score: Double) {
     userOptions.recentAttentionScore = Int(score*100)
+    if isDetailOptionOn {
+      userOptions.attentionData.append(AttentionModel(score: score))
+    } else {
+      userOptions.attentionData = []
+    }
   }
   func onBlink(timestamp: Int, isBlinkLeft: Bool, isBlinkRight: Bool, isBlink: Bool, eyeOpenness: Double) {
-    if isBlinkLeft && !blinking {
+    if isBlink && !blinking {
       userOptions.blinked = true
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
         self?.userOptions.blinked = false
         self?.blinking = false
       }
     }
+    let model = BlinkModel(isBlinkLeft: isBlinkLeft,
+                           isBlinkRight: isBlinkRight,
+                           isBlink: isBlink,
+                           eyeOpenness: eyeOpenness)
+    if isDetailOptionOn {
+    userOptions.blinkData.append(model)
+    } else {
+      userOptions.blinkData = []
+    }
   }
   func onDrowsiness(timestamp: Int, isDrowsiness: Bool) {
     userOptions.isSleepy = isDrowsiness
+    
+    if isDetailOptionOn {
+      userOptions.drowsinessData.append(DrowsinessModel(timestamp:timestamp, isDrowsiness: isDrowsiness))
+    } else {
+      userOptions.drowsinessData = []
+    }
   }
 }
 // MARK: - Calibration Delegate
@@ -208,5 +208,64 @@ extension SeeSoModel: CalibrationDelegate {
   }
   func onCalibrationFinished(calibrationData: [Double]) {
     isCalibrating = false
+  }
+}
+
+// MARK: - Sample Data Helper
+extension SeeSoModel {
+  // View Design
+  var initBtnHeaderText: Text {
+    return Text(initState != .succeed ? HEADER_INIT_STOPPED : isInitWithUserOption ? HEADER_INIT_STARTED_WITH_OPTION : HEADER_INIT_STARTED)
+  }
+  var initBtnFooter: Text? {
+    return (initState == .succeed && !isInitWithUserOption) ? Text( FOOTER_INIT_NO_OPTION) : nil
+  }
+  var trackBtnHeader: Text {
+    return Text(isGazeTracking ? HEADER_TRACK_STARTED : HEADER_TRACK_STOPPED)
+  }
+  var trackBtnTitle: String {
+    return isGazeTracking ? LIST_TRACK_STARTED : LIST_TRACK_STOPPED
+  }
+  var caliBtnFooter: Text? {
+    return isCalibrating ? nil : Text(FOOTER_CALIB)
+  }
+  var calibBtnTitle: String {
+    return isCalibrating ? LIST_CALIB_STARTED : LIST_CALIB_STOPPED
+  }
+  
+  // Example for User Info Data Control
+  var averageAttentionScore: Double {
+    if userOptions.attentionData.isEmpty {
+      return 0
+    } else {
+      let sum:Double = userOptions.attentionData.reduce(Double.zero, {
+        return $0 + $1.score
+      })
+      return (sum / Double(userOptions.attentionData.count))*100
+    }
+  }
+  var attentionCheckCount: Int {
+    return userOptions.attentionData.count
+  }
+  var leftBlinkCount: Int {
+    return userOptions.blinkData.reduce(0) {
+      return $0 + ($1.isBlinkLeft ? 1 : 0)
+    }
+  }
+  var rightBlinkCount: Int {
+    return userOptions.blinkData.reduce(0) {
+      return $0 + ($1.isBlinkRight ? 1 : 0)
+    }
+  }
+  var blinkCount: Int {
+    return userOptions.blinkData.reduce(0) {
+      return $0 + ($1.isBlink ? 1 : 0)
+    }
+  }
+  var averageEyeOpenness: Double {
+    let sum:Double = userOptions.blinkData.reduce(Double.zero, {
+      return $0 + $1.eyeOpenness
+    })
+    return sum / Double(userOptions.blinkData.count)
   }
 }

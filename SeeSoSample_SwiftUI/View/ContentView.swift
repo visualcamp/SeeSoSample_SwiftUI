@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ContentView.swift
 //  SeeSoSample_SwiftUI
 //
 //  Created by VisualCamp on 2022/05/25.
@@ -12,7 +12,6 @@ import SeeSo
 
 struct ContentView: View {
   @EnvironmentObject var model: SeeSoModel
-  var calibrationType: [CalibrationMode] = [.ONE_POINT, .FIVE_POINT]
   @State var isOpened: Bool = true
   
   var body: some View {
@@ -79,101 +78,32 @@ struct ContentView: View {
                 }.textCase(nil)
                 
                 if model.isGazeTracking {
-                  
-                  Section(
-                    header: Text(HEADER_CALIB) ,
-                    footer: model.caliBtnFooter
-                  ){
-                    
-                    Text(model.calibBtnTitle)
-                      .onTapGesture {
-                        model.toggleCalibrtation()
-                      }
-                    
-                    if !model.isCalibrating {
-                      
-                      HStack {
-                        Text(PICKER_CALIB)
-                        Picker("type pick",selection: $model.caliMode) {
-                          ForEach(calibrationType, id: \.self) {
-                            Text($0.description)
-                          }
-                        }
-                        .pickerStyle(.segmented)
-                        
-                      }
-                    }
-                  }.textCase(nil)
-                  
+                  CalibrationSection()
                   if model.isInitWithUserOption {
-                    Section {
-                      DisclosureGroup() {
-                        HStack {
-                          Text("Attention score of recent \(model.customAttentionInterval)s")
-                          Spacer()
-                          Text("\(model.userOptions.recentAttentionScore)%")
-                        }
-                        HStack {
-                          Text(TITLE_USER_OPTION_BLINK)
-                          Spacer()
-                          Text("\(model.userOptions.blinked ? "Ȕ _ Ű" : "Ȍ _ Ő")")
-                        }
-                        HStack {
-                          Text(TITLE_USER_OPTION_SLEEPY)
-                          Spacer()
-                          Text(model.userOptions.isSleepy ? "Yes.." : "Nope!")
-                        }
-                      } label: {
-                        Text(TITLE_USER_OPTION)
-                      }
+                    UserOptionSection()
+                    if model.isDetailOptionOn {
+                      DetailUserInfoSection()
                     }
                   }
                 }
               }
             }
           }.listStyle(GroupedListStyle())
-          
         }
       }
       
       if model.initState == .initializing {
-        ZStack {
-          Color
-            .black
-            .opacity(0.5)
-            .ignoresSafeArea()
-          ProgressView()
-            .progressViewStyle(CircularProgressViewStyle())
-            .scaleEffect(4)
-        }
+        LoadingView()
       }
       
       // Gaze Track Icon
       if model.isGazeTracking && !model.isCalibrating {
-        Circle()
-          .strokeBorder(Color.red,lineWidth: 3)
-          .frame(width: 25, height: 25)
-          .position(x: model.gazePoint.0, y: model.gazePoint.1)
+        GazeTrackerIcon()
       }
       
       // Calibrating Progress Icon
       if model.isCalibrating {
-        ZStack {
-          Color
-            .black
-            .opacity(0.5)
-            .ignoresSafeArea()
-          ZStack {
-            Text("\(Int(model.caliProgress*100))%")
-            Circle()
-              .strokeBorder(Color.red,lineWidth: 3)
-              .frame(width: 50, height: 50)
-          }
-          .position(x: model.caliPosition.0,
-                    y: model.caliPosition.1)
-          Text(GUIDE_CALIB)
-        }
-        
+        CalibrationView()
       }
     }
   }

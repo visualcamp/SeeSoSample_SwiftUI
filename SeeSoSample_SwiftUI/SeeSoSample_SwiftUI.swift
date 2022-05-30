@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SeeSoSample_SwiftUI.swift
 //  SeeSoSample_SwiftUI
 //
 //  Created by VisualCamp on 2022/05/25.
