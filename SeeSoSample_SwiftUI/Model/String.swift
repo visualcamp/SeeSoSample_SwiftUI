@@ -36,11 +36,19 @@ public var LIST_CALIB_STOPPED = "Start Calibration"
 public var LIST_CALIB_STARTED = "Calibration started!"
 public var PICKER_CALIB = "Calibration Type"
 public var GUIDE_CALIB = "Look at the circle!"
+public var TITLE_CALIB_SAVE = "Save Calibration Data to local"
+public var ALERT_CALIB_SAVE_TITLE = "Save Done"
+public var ALERT_CALIB_SAVE_BTN = "ok"
 
 // User Options
 public var TITLE_USER_OPTION = "User Options Info"
+public var TITLE_USER_OPTION_ATTENTION = "Attention score of recent %@s"
 public var TITLE_USER_OPTION_BLINK = "Blink State"
+public var VALUE_USER_OPTION_BLINKED = "Ȕ _ Ű"
+public var VALUE_USER_OPTION_OPENED = "Ȍ _ Ő"
 public var TITLE_USER_OPTION_SLEEPY = "Do I look sleepy now..?"
+public var VALUE_USER_OPTION_SLEEPY = "Yes.."
+public var VALUE_USER_OPTION_NOT_SLEEPY = "Nope!"
 public var TITLE_USER_OPTION_DETAIL = "Show Detail Info\n(it may cause lagging!)"
 
 // Example for User Info Data Control
@@ -51,3 +59,5 @@ public var TITLE_EXAMPLE_RIGHT_BLINK_COUNT = "right only blink count"
 public var TITLE_EXAMPLE_BLINK_COUNT = "both blink count"
 public var TITLE_EXAMPLE_EYE_OPENNESS = "everage eye Opennes"
 
+
+public var KEY_CALIBRATION_DATA = "KEY_CALIBRATION_DATA"

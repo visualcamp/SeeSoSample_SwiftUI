@@ -12,30 +12,47 @@ import SeeSo
 struct CalibrationSection: View {
   @EnvironmentObject var model: SeeSoModel
   var calibrationType: [CalibrationMode] = [.ONE_POINT, .FIVE_POINT]
-    var body: some View {
-      Section(
-        header: Text(HEADER_CALIB) ,
-        footer: model.caliBtnFooter
-      ){
+  @State var isSavePopupShow = false
+  
+  var body: some View {
+    Section(
+      header: Text(HEADER_CALIB) ,
+      footer: model.caliBtnFooter
+    ){
+      Button(action: {
+        model.toggleCalibrtation()
+      }, label: {
         Text(model.calibBtnTitle)
-          .onTapGesture {
-            model.toggleCalibrtation()
+          .foregroundColor(.primary)
+      })
+      HStack {
+        Text(PICKER_CALIB)
+        Picker("type pick",selection: $model.caliMode) {
+          ForEach(calibrationType, id: \.self) {
+            Text($0.description)
           }
-        HStack {
-          Text(PICKER_CALIB)
-          Picker("type pick",selection: $model.caliMode) {
-            ForEach(calibrationType, id: \.self) {
-              Text($0.description)
-            }
-          }
-          .pickerStyle(.segmented)
         }
-      }.textCase(nil)
-    }
+        .pickerStyle(.segmented)
+      }
+      if !model.savedCaliData.isEmpty {
+        Button {
+          isSavePopupShow = true
+        } label: {
+          Text(TITLE_CALIB_SAVE)
+            .foregroundColor(.primary)
+        }
+        .alert(isPresented:$isSavePopupShow) {
+          Alert(title: Text(ALERT_CALIB_SAVE_TITLE),message: nil,dismissButton: .default(Text(ALERT_CALIB_SAVE_BTN),action: {
+            model.saveCalibrationDataToLocal()
+          }))
+        }
+      }
+    }.textCase(nil)
+  }
 }
 
 struct CalibrationSection_Previews: PreviewProvider {
-    static var previews: some View {
-        CalibrationSection()
-    }
+  static var previews: some View {
+    CalibrationSection()
+  }
 }

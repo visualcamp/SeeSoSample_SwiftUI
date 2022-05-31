@@ -125,6 +125,7 @@ extension SeeSoModel: InitializationDelegate {
       
       // Default interval of checking attention score is once in 30 seconds
       self.tracker?.setAttentionInterval(interval: 10)
+      loadSavedCalibrationData()
       self.initState = .succeed
     } else {
       self.errors = error
@@ -202,11 +203,13 @@ extension SeeSoModel: CalibrationDelegate {
   func onCalibrationNextPoint(x: Double, y: Double) {
     caliPosition = (x,y)
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-      if let _ = self.tracker?.startCollectSamples() {
+      if let result = self.tracker?.startCollectSamples() {
+        print("startCollectSamples called \(result)")
       }
     }
   }
   func onCalibrationFinished(calibrationData: [Double]) {
+    savedCaliData = calibrationData
     isCalibrating = false
   }
 }
@@ -231,6 +234,17 @@ extension SeeSoModel {
   }
   var calibBtnTitle: String {
     return isCalibrating ? LIST_CALIB_STARTED : LIST_CALIB_STOPPED
+  }
+  
+  // Calibration Data Save
+  func saveCalibrationDataToLocal() {
+    UserDefaults.standard.set(savedCaliData, forKey: KEY_CALIBRATION_DATA)
+    savedCaliData = []
+  }
+  func loadSavedCalibrationData() {
+    if let calibData = UserDefaults.standard.array(forKey: KEY_CALIBRATION_DATA) as? [Double] {
+      let _ = tracker?.setCalibrationData(calibrationData: calibData)
+    }
   }
   
   // Example for User Info Data Control

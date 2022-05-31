@@ -29,12 +29,14 @@ struct ContentView: View {
             if !model.isCameraAccessAllowed {
               
               Section(header:Text(GUIDE_CAMERA_AUTH)) {
-                Text(LIST_CAMERA_AUTH)
-                  .onTapGesture {
-                    DispatchQueue.main.async {
-                      model.initGazeTracker()
-                    }
+                Button {
+                  DispatchQueue.main.async {
+                    model.initGazeTracker()
                   }
+                } label: {
+                  Text(LIST_CAMERA_AUTH)
+                    .foregroundColor(.primary)
+                }
               }.textCase(nil)
               
             } else {
@@ -45,36 +47,42 @@ struct ContentView: View {
               ) {
                 if model.initState != .succeed {
                   
-                  Text(LIST_INIT_STOPPED)
-                    .onTapGesture {
-                      DispatchQueue.main.async {
-                        model.initGazeTracker()
-                      }
+                  Button {
+                    DispatchQueue.main.async {
+                      model.initGazeTracker()
                     }
+                  } label: {
+                    Text(LIST_INIT_STOPPED)
+                      .foregroundColor(.primary)
+                  }
                   Toggle(isOn: $model.isInitWithUserOption) {
                     Text(LIST_INIT_WITH_USER_OPTION)
                   }
                   
                 } else {
-                  
-                  Text(LIST_INIT_STARTED)
-                    .onTapGesture {
-                      DispatchQueue.main.async {
-                        model.deinitGazeTracker()
-                      }
+                  Button {
+                    DispatchQueue.main.async {
+                      model.deinitGazeTracker()
                     }
+                  } label: {
+                    Text(LIST_INIT_STARTED)
+                      .foregroundColor(.primary)
+                  }
                 }
               }.textCase(nil)
               
               if model.initState == .succeed {
                 
                 Section(header: model.trackBtnHeader) {
-                  Text(model.trackBtnTitle)
-                    .onTapGesture {
-                      DispatchQueue.main.async {
-                        model.toggleTracking()
-                      }
+                  Button {
+                    DispatchQueue.main.async {
+                      model.toggleTracking()
                     }
+                  } label: {
+                    Text(model.trackBtnTitle)
+                      .foregroundColor(.primary)
+                  }
+                  
                 }.textCase(nil)
                 
                 if model.isGazeTracking {

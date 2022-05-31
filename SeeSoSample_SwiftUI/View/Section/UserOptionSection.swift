@@ -14,19 +14,19 @@ struct UserOptionSection: View {
     Section {
       DisclosureGroup() {
         HStack {
-          Text("Attention score of recent \(model.customAttentionInterval)s")
+          Text(String(format: TITLE_USER_OPTION, model.customAttentionInterval))
           Spacer()
           Text("\(model.userOptions.recentAttentionScore)%")
         }
         HStack {
           Text(TITLE_USER_OPTION_BLINK)
           Spacer()
-          Text("\(model.userOptions.blinked ? "Ȕ _ Ű" : "Ȍ _ Ő")")
+          Text("\(model.userOptions.blinked ? VALUE_USER_OPTION_BLINKED : VALUE_USER_OPTION_OPENED)")
         }
         HStack {
           Text(TITLE_USER_OPTION_SLEEPY)
           Spacer()
-          Text(model.userOptions.isSleepy ? "Yes.." : "Nope!")
+          Text(model.userOptions.isSleepy ?  VALUE_USER_OPTION_SLEEPY : VALUE_USER_OPTION_NOT_SLEEPY)
         }
         Toggle(TITLE_USER_OPTION_DETAIL, isOn: $model.isDetailOptionOn)
       } label: {
