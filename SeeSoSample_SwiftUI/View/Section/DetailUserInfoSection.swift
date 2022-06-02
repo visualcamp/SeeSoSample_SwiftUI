@@ -13,32 +13,32 @@ struct DetailUserInfoSection: View {
   var body: some View {
     Section() {
       HStack {
-        Text(TITLE_EXAMPLE_AVE_ATT_SCORE)
+        Text(SeeSoString.TITLE_EXAMPLE_AVE_ATT_SCORE)
         Spacer()
         Text("\(model.averageAttentionScore)")
       }
       HStack {
-        Text(TITLE_EXAMPLE_AVE_ATT_COUNT)
+        Text(SeeSoString.TITLE_EXAMPLE_AVE_ATT_COUNT)
         Spacer()
         Text("\(model.attentionCheckCount)")
       }
       HStack {
-        Text(TITLE_EXAMPLE_LEFT_BLINK_COUNT)
+        Text(SeeSoString.TITLE_EXAMPLE_LEFT_BLINK_COUNT)
         Spacer()
         Text("\(model.leftBlinkCount)")
       }
       HStack {
-        Text(TITLE_EXAMPLE_RIGHT_BLINK_COUNT)
+        Text(SeeSoString.TITLE_EXAMPLE_RIGHT_BLINK_COUNT)
         Spacer()
         Text("\(model.rightBlinkCount)")
       }
       HStack {
-        Text(TITLE_EXAMPLE_BLINK_COUNT)
+        Text(SeeSoString.TITLE_EXAMPLE_BLINK_COUNT)
         Spacer()
         Text("\(model.blinkCount)")
       }
       HStack {
-        Text(TITLE_EXAMPLE_EYE_OPENNESS)
+        Text(SeeSoString.TITLE_EXAMPLE_EYE_OPENNESS)
         Spacer()
         Text("\(model.averageEyeOpenness)")
       }

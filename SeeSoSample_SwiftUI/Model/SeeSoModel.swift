@@ -218,31 +218,31 @@ extension SeeSoModel: CalibrationDelegate {
 extension SeeSoModel {
   // View Design
   var initBtnHeaderText: Text {
-    return Text(initState != .succeed ? HEADER_INIT_STOPPED : isInitWithUserOption ? HEADER_INIT_STARTED_WITH_OPTION : HEADER_INIT_STARTED)
+    return Text(initState != .succeed ? SeeSoString.HEADER_INIT_STOPPED : isInitWithUserOption ? SeeSoString.HEADER_INIT_STARTED_WITH_OPTION : SeeSoString.HEADER_INIT_STARTED)
   }
   var initBtnFooter: Text? {
-    return (initState == .succeed && !isInitWithUserOption) ? Text( FOOTER_INIT_NO_OPTION) : nil
+    return (initState == .succeed && !isInitWithUserOption) ? Text(SeeSoString.FOOTER_INIT_NO_OPTION) : nil
   }
   var trackBtnHeader: Text {
-    return Text(isGazeTracking ? HEADER_TRACK_STARTED : HEADER_TRACK_STOPPED)
+    return Text(isGazeTracking ? SeeSoString.HEADER_TRACK_STARTED : SeeSoString.HEADER_TRACK_STOPPED)
   }
   var trackBtnTitle: String {
-    return isGazeTracking ? LIST_TRACK_STARTED : LIST_TRACK_STOPPED
+    return isGazeTracking ? SeeSoString.LIST_TRACK_STARTED : SeeSoString.LIST_TRACK_STOPPED
   }
   var caliBtnFooter: Text? {
-    return isCalibrating ? nil : Text(FOOTER_CALIB)
+    return isCalibrating ? nil : Text(SeeSoString.FOOTER_CALIB)
   }
   var calibBtnTitle: String {
-    return isCalibrating ? LIST_CALIB_STARTED : LIST_CALIB_STOPPED
+    return isCalibrating ? SeeSoString.LIST_CALIB_STARTED : SeeSoString.LIST_CALIB_STOPPED
   }
   
   // Calibration Data Save
   func saveCalibrationDataToLocal() {
-    UserDefaults.standard.set(savedCaliData, forKey: KEY_CALIBRATION_DATA)
+    UserDefaults.standard.set(savedCaliData, forKey: SeeSoString.KEY_CALIBRATION_DATA)
     savedCaliData = []
   }
   func loadSavedCalibrationData() {
-    if let calibData = UserDefaults.standard.array(forKey: KEY_CALIBRATION_DATA) as? [Double] {
+    if let calibData = UserDefaults.standard.array(forKey: SeeSoString.KEY_CALIBRATION_DATA) as? [Double] {
       let _ = tracker?.setCalibrationData(calibrationData: calibData)
     }
   }

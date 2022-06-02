@@ -24,7 +24,7 @@ struct CalibrationView: View {
       }
       .position(x: model.caliPosition.0,
                 y: model.caliPosition.1)
-      Text(GUIDE_CALIB)
+      Text(SeeSoString.GUIDE_CALIB)
     }
   }
 }

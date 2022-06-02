@@ -14,23 +14,23 @@ struct UserOptionSection: View {
     Section {
       DisclosureGroup() {
         HStack {
-          Text(String(format: TITLE_USER_OPTION, model.customAttentionInterval))
+          Text(String(format: SeeSoString.TITLE_USER_OPTION, model.customAttentionInterval))
           Spacer()
           Text("\(model.userOptions.recentAttentionScore)%")
         }
         HStack {
-          Text(TITLE_USER_OPTION_BLINK)
+          Text(SeeSoString.TITLE_USER_OPTION_BLINK)
           Spacer()
-          Text("\(model.userOptions.blinked ? VALUE_USER_OPTION_BLINKED : VALUE_USER_OPTION_OPENED)")
+          Text("\(model.userOptions.blinked ? SeeSoString.VALUE_USER_OPTION_BLINKED : SeeSoString.VALUE_USER_OPTION_OPENED)")
         }
         HStack {
-          Text(TITLE_USER_OPTION_SLEEPY)
+          Text(SeeSoString.TITLE_USER_OPTION_SLEEPY)
           Spacer()
-          Text(model.userOptions.isSleepy ?  VALUE_USER_OPTION_SLEEPY : VALUE_USER_OPTION_NOT_SLEEPY)
+          Text(model.userOptions.isSleepy ?  SeeSoString.VALUE_USER_OPTION_SLEEPY : SeeSoString.VALUE_USER_OPTION_NOT_SLEEPY)
         }
-        Toggle(TITLE_USER_OPTION_DETAIL, isOn: $model.isDetailOptionOn)
+        Toggle(SeeSoString.TITLE_USER_OPTION_DETAIL, isOn: $model.isDetailOptionOn)
       } label: {
-        Text(TITLE_USER_OPTION)
+        Text(SeeSoString.TITLE_USER_OPTION)
       }
     }
   }

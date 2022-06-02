@@ -21,20 +21,20 @@ struct ContentView: View {
           Divider()
             .padding(15)
           
-          Text(GUIDE_MAIN)
+          Text(SeeSoString.GUIDE_MAIN)
             .multilineTextAlignment(.center)
-            .navigationTitle(APP_TITLE)
+            .navigationTitle(SeeSoString.APP_TITLE)
           
           List {
             if !model.isCameraAccessAllowed {
               
-              Section(header:Text(GUIDE_CAMERA_AUTH)) {
+              Section(header:Text(SeeSoString.GUIDE_CAMERA_AUTH)) {
                 Button {
                   DispatchQueue.main.async {
                     model.initGazeTracker()
                   }
                 } label: {
-                  Text(LIST_CAMERA_AUTH)
+                  Text(SeeSoString.LIST_CAMERA_AUTH)
                     .foregroundColor(.primary)
                 }
               }.textCase(nil)
@@ -52,11 +52,11 @@ struct ContentView: View {
                       model.initGazeTracker()
                     }
                   } label: {
-                    Text(LIST_INIT_STOPPED)
+                    Text(SeeSoString.LIST_INIT_STOPPED)
                       .foregroundColor(.primary)
                   }
                   Toggle(isOn: $model.isInitWithUserOption) {
-                    Text(LIST_INIT_WITH_USER_OPTION)
+                    Text(SeeSoString.LIST_INIT_WITH_USER_OPTION)
                   }
                   
                 } else {
@@ -65,7 +65,7 @@ struct ContentView: View {
                       model.deinitGazeTracker()
                     }
                   } label: {
-                    Text(LIST_INIT_STARTED)
+                    Text(SeeSoString.LIST_INIT_STARTED)
                       .foregroundColor(.primary)
                   }
                 }

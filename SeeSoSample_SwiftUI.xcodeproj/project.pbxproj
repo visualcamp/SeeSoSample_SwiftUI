@@ -22,7 +22,7 @@
 		F94D3FA328449A3C00E219ED /* UserOptionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D3FA228449A3C00E219ED /* UserOptionSection.swift */; };
 		F94D3FA528449B4000E219ED /* CalibrationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D3FA428449B4000E219ED /* CalibrationSection.swift */; };
 		F94D3FA72844B3B100E219ED /* DetailUserInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D3FA62844B3B100E219ED /* DetailUserInfoSection.swift */; };
-		F984D76D283F698B0049F242 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F984D76C283F698B0049F242 /* String.swift */; };
+		F984D76D283F698B0049F242 /* SeeSoString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F984D76C283F698B0049F242 /* SeeSoString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,7 +55,7 @@
 		F94D3FA228449A3C00E219ED /* UserOptionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOptionSection.swift; sourceTree = "<group>"; };
 		F94D3FA428449B4000E219ED /* CalibrationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationSection.swift; sourceTree = "<group>"; };
 		F94D3FA62844B3B100E219ED /* DetailUserInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserInfoSection.swift; sourceTree = "<group>"; };
-		F984D76C283F698B0049F242 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		F984D76C283F698B0049F242 /* SeeSoString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeSoString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,9 +149,9 @@
 			isa = PBXGroup;
 			children = (
 				63FB638527100DC8005B72BA /* SeeSoModel.swift */,
+				F984D76C283F698B0049F242 /* SeeSoString.swift */,
 				F94D3F862840A39800E219ED /* UserOptionsModel.swift */,
 				63FB638727100DC8005B72BA /* enum.swift */,
-				F984D76C283F698B0049F242 /* String.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,7 +233,7 @@
 				63FB638827100DC8005B72BA /* SeeSoModel.swift in Sources */,
 				F94D3F9C2844999C00E219ED /* GazeTrackerIcon.swift in Sources */,
 				F94D3F9E284499C400E219ED /* CalibrationView.swift in Sources */,
-				F984D76D283F698B0049F242 /* String.swift in Sources */,
+				F984D76D283F698B0049F242 /* SeeSoString.swift in Sources */,
 				63FB638A27100DC8005B72BA /* enum.swift in Sources */,
 				63FB637827100D7E005B72BA /* SeeSoSample_SwiftUI.swift in Sources */,
 				F94D3FA72844B3B100E219ED /* DetailUserInfoSection.swift in Sources */,

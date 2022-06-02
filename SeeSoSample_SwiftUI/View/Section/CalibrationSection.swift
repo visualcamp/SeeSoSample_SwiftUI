@@ -16,7 +16,7 @@ struct CalibrationSection: View {
   
   var body: some View {
     Section(
-      header: Text(HEADER_CALIB) ,
+      header: Text(SeeSoString.HEADER_CALIB) ,
       footer: model.caliBtnFooter
     ){
       Button(action: {
@@ -26,7 +26,7 @@ struct CalibrationSection: View {
           .foregroundColor(.primary)
       })
       HStack {
-        Text(PICKER_CALIB)
+        Text(SeeSoString.PICKER_CALIB)
         Picker("type pick",selection: $model.caliMode) {
           ForEach(calibrationType, id: \.self) {
             Text($0.description)
@@ -38,11 +38,14 @@ struct CalibrationSection: View {
         Button {
           isSavePopupShow = true
         } label: {
-          Text(TITLE_CALIB_SAVE)
+          Text(SeeSoString.TITLE_CALIB_SAVE)
             .foregroundColor(.primary)
         }
         .alert(isPresented:$isSavePopupShow) {
-          Alert(title: Text(ALERT_CALIB_SAVE_TITLE),message: nil,dismissButton: .default(Text(ALERT_CALIB_SAVE_BTN),action: {
+          Alert(title: Text(SeeSoString.ALERT_CALIB_SAVE_TITLE),
+                message: nil,
+                dismissButton: .default(Text(SeeSoString.ALERT_CALIB_SAVE_BTN),
+                                        action: {
             model.saveCalibrationDataToLocal()
           }))
         }
