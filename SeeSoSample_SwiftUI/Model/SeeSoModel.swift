@@ -3,7 +3,7 @@
 //  SeeSoSample_SwiftUI
 //
 //  Created by VisualCamp on 2022/05/25.
-//  Copyright © 2022 VisaulCamp. All rights reserved.
+//  Copyright © 2022 VisualCamp. All rights reserved.
 //
 
 import Foundation
@@ -75,7 +75,7 @@ final class SeeSoModel: ObservableObject {
   
   // Calibration
   @MainActor
-  public func toggleCalibrtation() {
+  public func toggleCalibration() {
     let wasCali = isCalibrating
     isCalibrating.toggle()
     if wasCali {
@@ -156,7 +156,7 @@ extension SeeSoModel: StatusDelegate {
   }
 }
 // MARK: - User State Delegate
-// While gaze tracking is on, You can get detail infomation of user state through this delegate.
+// While gaze tracking is on, You can get detail information of user state through this delegate.
 extension SeeSoModel: UserStatusDelegate {
   func onAttention(timestampBegin: Int, timestampEnd: Int, score: Double) {
     userOptions.recentAttentionScore = Int(score*100)

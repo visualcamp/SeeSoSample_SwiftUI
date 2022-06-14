@@ -3,7 +3,7 @@
 //  SeeSoSample_SwiftUI
 //
 //  Created by VisualCamp on 2022/05/25.
-//  Copyright © 2022 VisaulCamp. All rights reserved.
+//  Copyright © 2022 VisualCamp. All rights reserved.
 //
 
 class SeeSoString {
@@ -12,7 +12,7 @@ class SeeSoString {
   static let GUIDE_MAIN = "Follow steps below to experience gaze tracking."
   // Camera Auth
   static let GUIDE_CAMERA_AUTH = "We must have camera permission!"
-  static let LIST_CAMERA_AUTH = "Follow steps below to experience gaze tracking."
+  static let LIST_CAMERA_AUTH = "Click here to request camera authorization."
 
   // Init
   static let HEADER_INIT_STOPPED = "You need to init GazeTracker first."

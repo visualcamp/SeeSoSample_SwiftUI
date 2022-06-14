@@ -3,7 +3,7 @@
 //  SeeSoSample_SwiftUI
 //
 //  Created by VisualCamp on 2022/05/25.
-//  Copyright © 2022 VisaulCamp. All rights reserved.
+//  Copyright © 2022 VisualCamp. All rights reserved.
 //
 
 import SwiftUI
@@ -20,7 +20,7 @@ struct CalibrationSection: View {
       footer: model.caliBtnFooter
     ){
       Button(action: {
-        model.toggleCalibrtation()
+        model.toggleCalibration()
       }, label: {
         Text(model.calibBtnTitle)
           .foregroundColor(.primary)
