@@ -12,9 +12,11 @@
 		63FB637F27100D82005B72BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63FB637E27100D82005B72BA /* Preview Assets.xcassets */; };
 		63FB638827100DC8005B72BA /* SeeSoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FB638527100DC8005B72BA /* SeeSoModel.swift */; };
 		63FB638A27100DC8005B72BA /* enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FB638727100DC8005B72BA /* enum.swift */; };
+		F90709D628D85A36007BAB7A /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90709D528D85A36007BAB7A /* FaceView.swift */; };
+		F90709D828D973B5007BAB7A /* FaceViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90709D728D973B5007BAB7A /* FaceViewSection.swift */; };
+		F90709E728D9A84E007BAB7A /* SeeSo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F90709E628D9A84E007BAB7A /* SeeSo.framework */; };
+		F90709E828D9A84E007BAB7A /* SeeSo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F90709E628D9A84E007BAB7A /* SeeSo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F92405B0283CDE120086BD10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92405AF283CDE120086BD10 /* ContentView.swift */; };
-		F92405B5283CDE500086BD10 /* SeeSo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92405B4283CDE500086BD10 /* SeeSo.framework */; };
-		F92405B6283CDE500086BD10 /* SeeSo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F92405B4283CDE500086BD10 /* SeeSo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F94D3F872840A39800E219ED /* UserOptionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D3F862840A39800E219ED /* UserOptionsModel.swift */; };
 		F94D3F9C2844999C00E219ED /* GazeTrackerIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D3F9B2844999C00E219ED /* GazeTrackerIcon.swift */; };
 		F94D3F9E284499C400E219ED /* CalibrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D3F9D284499C400E219ED /* CalibrationView.swift */; };
@@ -26,13 +28,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F92405B7283CDE500086BD10 /* Embed Frameworks */ = {
+		F90709E428D99DC3007BAB7A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F92405B6283CDE500086BD10 /* SeeSo.framework in Embed Frameworks */,
+				F90709E828D9A84E007BAB7A /* SeeSo.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,8 +48,11 @@
 		63FB637E27100D82005B72BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		63FB638527100DC8005B72BA /* SeeSoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeSoModel.swift; sourceTree = "<group>"; };
 		63FB638727100DC8005B72BA /* enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = enum.swift; sourceTree = "<group>"; };
+		F90709D528D85A36007BAB7A /* FaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
+		F90709D728D973B5007BAB7A /* FaceViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewSection.swift; sourceTree = "<group>"; };
+		F90709E128D99DB3007BAB7A /* SeeSoSample-SwiftUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "SeeSoSample-SwiftUI-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F90709E628D9A84E007BAB7A /* SeeSo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SeeSo.framework; sourceTree = "<group>"; };
 		F92405AF283CDE120086BD10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F92405B4283CDE500086BD10 /* SeeSo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SeeSo.framework; sourceTree = "<group>"; };
 		F94D3F862840A39800E219ED /* UserOptionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOptionsModel.swift; sourceTree = "<group>"; };
 		F94D3F9B2844999C00E219ED /* GazeTrackerIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GazeTrackerIcon.swift; sourceTree = "<group>"; };
 		F94D3F9D284499C400E219ED /* CalibrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationView.swift; sourceTree = "<group>"; };
@@ -63,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F92405B5283CDE500086BD10 /* SeeSo.framework in Frameworks */,
+				F90709E728D9A84E007BAB7A /* SeeSo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +95,7 @@
 		63FB637627100D7E005B72BA /* SeeSoSample_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				F90709E128D99DB3007BAB7A /* SeeSoSample-SwiftUI-Info.plist */,
 				63FB637727100D7E005B72BA /* SeeSoSample_SwiftUI.swift */,
 				F984D759283DF3E10049F242 /* View */,
 				F984D75A283DF3EE0049F242 /* Model */,
@@ -107,10 +113,19 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F90709D928D97479007BAB7A /* FaceView */ = {
+			isa = PBXGroup;
+			children = (
+				F90709D728D973B5007BAB7A /* FaceViewSection.swift */,
+				F90709D528D85A36007BAB7A /* FaceView.swift */,
+			);
+			path = FaceView;
+			sourceTree = "<group>";
+		};
 		F92405B3283CDE500086BD10 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F92405B4283CDE500086BD10 /* SeeSo.framework */,
+				F90709E628D9A84E007BAB7A /* SeeSo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				F94D3FA428449B4000E219ED /* CalibrationSection.swift */,
+				F90709D928D97479007BAB7A /* FaceView */,
 				F94D3FA228449A3C00E219ED /* UserOptionSection.swift */,
 				F94D3FA62844B3B100E219ED /* DetailUserInfoSection.swift */,
 			);
@@ -166,7 +182,7 @@
 				63FB637027100D7E005B72BA /* Sources */,
 				63FB637127100D7E005B72BA /* Frameworks */,
 				63FB637227100D7E005B72BA /* Resources */,
-				F92405B7283CDE500086BD10 /* Embed Frameworks */,
+				F90709E428D99DC3007BAB7A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -228,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F92405B0283CDE120086BD10 /* ContentView.swift in Sources */,
+				F90709D628D85A36007BAB7A /* FaceView.swift in Sources */,
 				F94D3FA528449B4000E219ED /* CalibrationSection.swift in Sources */,
 				F94D3FA328449A3C00E219ED /* UserOptionSection.swift in Sources */,
 				63FB638827100DC8005B72BA /* SeeSoModel.swift in Sources */,
@@ -239,6 +256,7 @@
 				F94D3FA72844B3B100E219ED /* DetailUserInfoSection.swift in Sources */,
 				F94D3F872840A39800E219ED /* UserOptionsModel.swift in Sources */,
 				F94D3FA0284499FF00E219ED /* LoadingView.swift in Sources */,
+				F90709D828D973B5007BAB7A /* FaceViewSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +395,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "SeeSoSample-SwiftUI-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "EyeTracking need CameraPermission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -414,6 +433,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "SeeSoSample-SwiftUI-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "EyeTracking need CameraPermission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

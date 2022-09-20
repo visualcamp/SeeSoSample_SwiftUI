@@ -16,7 +16,7 @@ typealias seeSoCoordi = (Double,Double)
 final class SeeSoModel: ObservableObject {
   
   // License Key
-  private let licenseKey: String = "Input License Key"
+  private let licenseKey: String = "dev_1ntzip9admm6g0upynw3gooycnecx0vl93hz8nox"
   
   // Init State Control
   @Published var initState: TrackerInitState = .default
@@ -33,12 +33,15 @@ final class SeeSoModel: ObservableObject {
   @Published var isGazeTracking: Bool = false
   @Published var gazePoint: seeSoCoordi = (0,0)
   private var tracker: GazeTracker? = nil
+  var trackingFPS = 30
   
   // User Options
   var customAttentionInterval: Int = 10
   @Published var userOptions = UserOptionsModel.default
-  private var blinking: Bool = false
+  private var leftBlinking: Bool = false
+  private var rightBlinking: Bool = false
   @Published var isDetailOptionOn:Bool = false
+  @Published var faceInfo:FaceInfo? 
   
   func initGazeTracker() {
     if isCameraAccessAllowed {
@@ -61,6 +64,7 @@ final class SeeSoModel: ObservableObject {
     tracker?.gazeDelegate = nil
     GazeTracker.deinitGazeTracker(tracker: tracker)
     tracker = nil
+    tracker?.setTrackingFPS(fps: trackingFPS)
     
     initState = .default
     userOptions = UserOptionsModel.default
@@ -120,11 +124,13 @@ extension SeeSoModel: InitializationDelegate {
       self.tracker?.setDelegates(statusDelegate: self,
                                  gazeDelegate: self,
                                  calibrationDelegate: self,
+                                 userStatusDelegate: self,
                                  imageDelegate: nil,
-                                 userStatusDelegate: self)
+                                 faceDelegate:self)
       
       // Default interval of checking attention score is once in 30 seconds
       self.tracker?.setAttentionInterval(interval: 10)
+      
       loadSavedCalibrationData()
       self.initState = .succeed
     } else {
@@ -166,20 +172,18 @@ extension SeeSoModel: UserStatusDelegate {
       userOptions.attentionData = []
     }
   }
-  func onBlink(timestamp: Int, isBlinkLeft: Bool, isBlinkRight: Bool, isBlink: Bool, eyeOpenness: Double) {
-    if isBlink && !blinking {
-      userOptions.blinked = true
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
-        self?.userOptions.blinked = false
-        self?.blinking = false
-      }
-    }
+  func onBlink(timestamp: Int, isBlinkLeft: Bool, isBlinkRight: Bool, isBlink: Bool, leftOpenness: Double, rightOpenness: Double) {
+    
+    userOptions.leftBlinked = isBlinkLeft
+    userOptions.rightBlinked = isBlinkRight
+    
     let model = BlinkModel(isBlinkLeft: isBlinkLeft,
                            isBlinkRight: isBlinkRight,
                            isBlink: isBlink,
-                           eyeOpenness: eyeOpenness)
+                           leftEyeOpenness: leftOpenness,
+                           rightEyeOpenness: rightOpenness)
     if isDetailOptionOn {
-    userOptions.blinkData.append(model)
+      userOptions.blinkData.append(model)
     } else {
       userOptions.blinkData = []
     }
@@ -194,6 +198,7 @@ extension SeeSoModel: UserStatusDelegate {
     }
   }
 }
+
 // MARK: - Calibration Delegate
 // You can manage Calibration progress with this delegate.
 extension SeeSoModel: CalibrationDelegate {
@@ -211,6 +216,28 @@ extension SeeSoModel: CalibrationDelegate {
   func onCalibrationFinished(calibrationData: [Double]) {
     savedCaliData = calibrationData
     isCalibrating = false
+  }
+}
+extension SeeSoModel: FaceDelegate {
+  func onFace(faceInfo: FaceInfo) {
+    //    print(faceInfo.printInfo())
+    self.faceInfo = faceInfo
+  }
+}
+extension FaceInfo {
+  func printInfo() -> String {
+    return
+"""
+\n
+timestmap = \(timestamp)
+score = \(score)
+rect = \(rect)
+pitch = \(pitch)
+yaw = \(yaw)
+centerXYZ = \(centerXYZ))
+imageSize = \(imageSize)
+\n
+"""
   }
 }
 
@@ -261,24 +288,30 @@ extension SeeSoModel {
   var attentionCheckCount: Int {
     return userOptions.attentionData.count
   }
-  var leftBlinkCount: Int {
-    return userOptions.blinkData.reduce(0) {
+  var leftEyeClosedTime: Float {
+    return Float(userOptions.blinkData.reduce(0) {
       return $0 + ($1.isBlinkLeft ? 1 : 0)
-    }
+    }) / Float(trackingFPS)
   }
-  var rightBlinkCount: Int {
-    return userOptions.blinkData.reduce(0) {
+  var rightEyeClosedTime: Float {
+    return Float(userOptions.blinkData.reduce(0) {
       return $0 + ($1.isBlinkRight ? 1 : 0)
-    }
+    }) / Float(trackingFPS)
   }
-  var blinkCount: Int {
-    return userOptions.blinkData.reduce(0) {
+  var bothEyeClosedTime: Float {
+    return Float(userOptions.blinkData.reduce(0) {
       return $0 + ($1.isBlink ? 1 : 0)
-    }
+    }) / Float(trackingFPS)
   }
-  var averageEyeOpenness: Double {
+  var averageLeftEyeOpenness: Double {
     let sum:Double = userOptions.blinkData.reduce(Double.zero, {
-      return $0 + $1.eyeOpenness
+      return $0 + $1.leftEyeOpenness
+    })
+    return sum / Double(userOptions.blinkData.count)
+  }
+  var averageRightEyeOpenness: Double {
+    let sum:Double = userOptions.blinkData.reduce(Double.zero, {
+      return $0 + $1.rightEyeOpenness
     })
     return sum / Double(userOptions.blinkData.count)
   }

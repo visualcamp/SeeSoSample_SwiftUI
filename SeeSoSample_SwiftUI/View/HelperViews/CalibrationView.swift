@@ -14,18 +14,19 @@ struct CalibrationView: View {
     ZStack {
       Color
         .black
-        .opacity(0.5)
-        .ignoresSafeArea()
+        .opacity(0.9)
       ZStack {
         Text("\(Int(model.caliProgress*100))%")
+          .foregroundColor(.white)
+          .font(.system(.headline))
         Circle()
           .strokeBorder(Color.red,lineWidth: 3)
           .frame(width: 50, height: 50)
       }
       .position(x: model.caliPosition.0,
                 y: model.caliPosition.1)
-      Text(SeeSoString.GUIDE_CALIB)
     }
+    .ignoresSafeArea()
   }
 }
 

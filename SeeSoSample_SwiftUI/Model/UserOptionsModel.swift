@@ -11,7 +11,8 @@ import Foundation
 struct UserOptionsModel {
   // Simple
   var recentAttentionScore: Int = 0
-  var blinked:Bool = false
+  var leftBlinked:Bool = false
+  var rightBlinked:Bool = false
   var isSleepy: Bool = false
   
   // Detailed figures
@@ -29,7 +30,8 @@ struct BlinkModel {
   var isBlinkLeft:Bool
   var isBlinkRight:Bool
   var isBlink:Bool
-  var eyeOpenness:Double
+  var leftEyeOpenness:Double
+  var rightEyeOpenness:Double
 }
 
 struct DrowsinessModel {
