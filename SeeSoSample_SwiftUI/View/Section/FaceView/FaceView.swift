@@ -13,7 +13,7 @@ struct FaceView: View {
   var rectSize = UIWindow().bounds.width / 2
   var body: some View {
     VStack(alignment: .center) {
-      Text("Move your head!")
+      Text(SeeSoString.GUIDE_FACE_VIEW)
       Spacer()
       ZStack {
         Rectangle()
@@ -27,8 +27,8 @@ struct FaceView: View {
       }
       Spacer()
       VStack(alignment: .leading) {
-        Text("face score = \(NSString(format: "%.4f", model.faceInfo?.score ?? -999))")
-        Text("distance from face to camera : \(NSString(format: "%.4f", model.faceInfo?.centerXYZ.z ?? 0))")
+        Text("\(NSString(format: "%@%.4f",SeeSoString.TITLE_FACE_SCORE, model.faceInfo?.score ?? -999))")
+        Text("\(NSString(format: "%@%.4f",SeeSoString.TITLE_FACE_DISTANCE, model.faceInfo?.centerXYZ.z ?? 0))")
       }
     }
   }

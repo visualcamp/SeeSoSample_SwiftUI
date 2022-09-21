@@ -16,7 +16,7 @@ typealias seeSoCoordi = (Double,Double)
 final class SeeSoModel: ObservableObject {
   
   // License Key
-  private let licenseKey: String = "dev_1ntzip9admm6g0upynw3gooycnecx0vl93hz8nox"
+  private let licenseKey: String = "Input your license key here"
   
   // Init State Control
   @Published var initState: TrackerInitState = .default
@@ -151,7 +151,7 @@ extension SeeSoModel: GazeDelegate {
     }
   }
 }
-// MARK: - Gaze Data Delegate
+// MARK: - Init status Delegate
 // You can check state of tracking with this delegate.
 extension SeeSoModel: StatusDelegate {
   func onStarted() {
@@ -220,27 +220,9 @@ extension SeeSoModel: CalibrationDelegate {
 }
 extension SeeSoModel: FaceDelegate {
   func onFace(faceInfo: FaceInfo) {
-    //    print(faceInfo.printInfo())
     self.faceInfo = faceInfo
   }
 }
-extension FaceInfo {
-  func printInfo() -> String {
-    return
-"""
-\n
-timestmap = \(timestamp)
-score = \(score)
-rect = \(rect)
-pitch = \(pitch)
-yaw = \(yaw)
-centerXYZ = \(centerXYZ))
-imageSize = \(imageSize)
-\n
-"""
-  }
-}
-
 // MARK: - Sample Data Helper
 extension SeeSoModel {
   // View Design

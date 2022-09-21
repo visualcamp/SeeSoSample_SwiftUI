@@ -33,6 +33,9 @@ class SeeSoString {
   // Face View
   static let HEADER_FACE_VIEW = "You can check state of face."
   static let LIST_FACE_VIEW = "Check Face View"
+  static let GUIDE_FACE_VIEW = "Move your head!"
+  static let TITLE_FACE_SCORE = "face score = "
+  static let TITLE_FACE_DISTANCE = "distance from face to camera : "
   
   // Calib
   static let HEADER_CALIB = "And also you can improve accuracy through calibration."
