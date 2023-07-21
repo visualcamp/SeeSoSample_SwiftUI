@@ -4,7 +4,7 @@
 <div align="center">
     <h1>SeeSo Demo SwiftUI </h1>
     <a href="https://github.com/visualcamp/seeso-sample-ios/releases" alt="release">
-        <img src="https://img.shields.io/badge/version-2.5.0-blue" />
+        <img src="https://img.shields.io/badge/version-2.6.0-blue" />
     </a>
 </div>
 
@@ -23,9 +23,8 @@ In 2021, SeeSo was recognized for its innovative technology and won GLOMO Award 
 * API(Objective-C): https://docs.seeso.io/docs/objc-api-docs/
 
 ## Requirements
-* SeeSo.framework : 2.5.0
-* Swift: 5.5
-* It must be run on a **real iOS device. (iOS 11.0 +, iPhone 6s +)**
+* SeeSo.framework : 2.6.0
+* It must be run on a **real iOS device. (iOS 13.0 +, iPhone 6s +)**
 * It must be an **internet environment.**
 * [SeeSo iOS SDK](https://console.seeso.io/)
 * Must be issued a license key in [SeeSo Console](https://console.seeso.io/)
