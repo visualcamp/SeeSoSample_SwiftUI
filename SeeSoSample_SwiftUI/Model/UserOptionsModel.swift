@@ -30,11 +30,12 @@ struct BlinkModel {
   var isBlinkLeft:Bool
   var isBlinkRight:Bool
   var isBlink:Bool
-  var leftEyeOpenness:Double
-  var rightEyeOpenness:Double
+  var leftOpenness:Double
+  var rightOpenness:Double
 }
 
 struct DrowsinessModel {
   var timestamp:Int
   var isDrowsiness:Bool
+  var intensity:Double
 }

@@ -121,12 +121,10 @@ extension SeeSoModel: InitializationDelegate {
   func onInitialized(tracker: GazeTracker?, error: InitializationError) {
     if tracker != nil {
       self.tracker = tracker
-      self.tracker?.setDelegates(statusDelegate: self,
-                                 gazeDelegate: self,
-                                 calibrationDelegate: self,
-                                 userStatusDelegate: self,
-                                 imageDelegate: nil,
-                                 faceDelegate:self)
+      self.tracker?.statusDelegate = self
+      self.tracker?.gazeDelegate = self
+      self.tracker?.calibrationDelegate = self
+      self.tracker?.userStatusDelegate = self
       
       // Default interval of checking attention score is once in 30 seconds
       self.tracker?.setAttentionInterval(interval: 10)
@@ -173,26 +171,29 @@ extension SeeSoModel: UserStatusDelegate {
     }
   }
   func onBlink(timestamp: Int, isBlinkLeft: Bool, isBlinkRight: Bool, isBlink: Bool, leftOpenness: Double, rightOpenness: Double) {
-    
-    userOptions.leftBlinked = isBlinkLeft
-    userOptions.rightBlinked = isBlinkRight
-    
+    if isBlink && !blinking {
+      userOptions.blinked = true
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
+        self?.userOptions.blinked = false
+        self?.blinking = false
+      }
+    }
     let model = BlinkModel(isBlinkLeft: isBlinkLeft,
                            isBlinkRight: isBlinkRight,
                            isBlink: isBlink,
-                           leftEyeOpenness: leftOpenness,
-                           rightEyeOpenness: rightOpenness)
+                           leftOpenness: leftOpenness,
+                           rightOpenness: rightOpenness)
     if isDetailOptionOn {
       userOptions.blinkData.append(model)
     } else {
       userOptions.blinkData = []
     }
   }
-  func onDrowsiness(timestamp: Int, isDrowsiness: Bool) {
+  func onDrowsiness(timestamp: Int, isDrowsiness: Bool, intensity: Double) {
     userOptions.isSleepy = isDrowsiness
     
     if isDetailOptionOn {
-      userOptions.drowsinessData.append(DrowsinessModel(timestamp:timestamp, isDrowsiness: isDrowsiness))
+      userOptions.drowsinessData.append(DrowsinessModel(timestamp:timestamp, isDrowsiness: isDrowsiness, intensity: intensity))
     } else {
       userOptions.drowsinessData = []
     }
@@ -291,9 +292,17 @@ extension SeeSoModel {
     })
     return sum / Double(userOptions.blinkData.count)
   }
-  var averageRightEyeOpenness: Double {
+  var averageLeftOpenness: Double {
     let sum:Double = userOptions.blinkData.reduce(Double.zero, {
-      return $0 + $1.rightEyeOpenness
+      return $0 + $1.leftOpenness
+    })
+    return sum / Double(userOptions.blinkData.count)
+  }
+
+  var averageRightOpenness: Double {
+    let sum:Double = userOptions.blinkData.reduce(Double.zero, {
+      return $0 + $1.rightOpenness
+
     })
     return sum / Double(userOptions.blinkData.count)
   }

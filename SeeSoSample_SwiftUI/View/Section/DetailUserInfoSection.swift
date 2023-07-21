@@ -40,12 +40,10 @@ struct DetailUserInfoSection: View {
       HStack {
         Text(SeeSoString.TITLE_EXAMPLE_LEFT_EYE_OPENNESS)
         Spacer()
-        Text("\(NSString(format: "%.4f", model.averageLeftEyeOpenness))")
-      }
-      HStack {
-        Text(SeeSoString.TITLE_EXAMPLE_RIGHT_EYE_OPENNESS)
+        Text("Left \(model.averageLeftOpenness)")
         Spacer()
-        Text("\(NSString(format: "%.4f", model.averageRightEyeOpenness))")
+        Text("Right \(model.averageRightOpenness)")
+
       }
     }
   }
