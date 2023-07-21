@@ -12,7 +12,6 @@ import SeeSo
 
 struct ContentView: View {
   @EnvironmentObject var model: SeeSoModel
-  @State var isOpened: Bool = true
   
   var body: some View {
     ZStack {
@@ -27,7 +26,6 @@ struct ContentView: View {
           
           List {
             if !model.isCameraAccessAllowed {
-              
               Section(header:Text(SeeSoString.GUIDE_CAMERA_AUTH)) {
                 Button {
                   DispatchQueue.main.async {
@@ -86,6 +84,7 @@ struct ContentView: View {
                 }.textCase(nil)
                 
                 if model.isGazeTracking {
+                  FaceViewSection()
                   CalibrationSection()
                   if model.isInitWithUserOption {
                     UserOptionSection()

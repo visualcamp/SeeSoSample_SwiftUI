@@ -23,26 +23,27 @@ struct DetailUserInfoSection: View {
         Text("\(model.attentionCheckCount)")
       }
       HStack {
-        Text(SeeSoString.TITLE_EXAMPLE_LEFT_BLINK_COUNT)
+        Text(SeeSoString.TITLE_EXAMPLE_LEFT_EYE_CLOSE_TIME)
         Spacer()
-        Text("\(model.leftBlinkCount)")
+        Text("\(NSString(format: "%.4f", model.leftEyeClosedTime))")
       }
       HStack {
-        Text(SeeSoString.TITLE_EXAMPLE_RIGHT_BLINK_COUNT)
+        Text(SeeSoString.TITLE_EXAMPLE_RIGHT_EYE_CLOSE_TIME)
         Spacer()
-        Text("\(model.rightBlinkCount)")
+        Text("\(NSString(format: "%.4f", model.rightEyeClosedTime))")
       }
       HStack {
-        Text(SeeSoString.TITLE_EXAMPLE_BLINK_COUNT)
+        Text(SeeSoString.TITLE_EXAMPLE_BOTH_EYE_CLOSE_TIME)
         Spacer()
-        Text("\(model.blinkCount)")
+        Text("\(NSString(format: "%.4f", model.bothEyeClosedTime))")
       }
       HStack {
-        Text(SeeSoString.TITLE_EXAMPLE_EYE_OPENNESS)
+        Text(SeeSoString.TITLE_EXAMPLE_LEFT_EYE_OPENNESS)
         Spacer()
         Text("Left \(model.averageLeftOpenness)")
         Spacer()
         Text("Right \(model.averageRightOpenness)")
+
       }
     }
   }

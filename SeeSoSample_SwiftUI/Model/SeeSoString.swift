@@ -30,6 +30,13 @@ class SeeSoString {
   static let LIST_TRACK_STOPPED = "Start tracking."
   static let LIST_TRACK_STARTED = "Stop tracking"
 
+  // Face View
+  static let HEADER_FACE_VIEW = "You can check state of face."
+  static let LIST_FACE_VIEW = "Check Face View"
+  static let GUIDE_FACE_VIEW = "Move your head!"
+  static let TITLE_FACE_SCORE = "face score = "
+  static let TITLE_FACE_DISTANCE = "distance from face to camera : "
+  
   // Calib
   static let HEADER_CALIB = "And also you can improve accuracy through calibration."
   static let FOOTER_CALIB = "(Calibration only can be done while gaze tracking is activated)"
@@ -55,10 +62,11 @@ class SeeSoString {
   // Example for User Info Data Control
   static let TITLE_EXAMPLE_AVE_ATT_SCORE = "average attention score"
   static let TITLE_EXAMPLE_AVE_ATT_COUNT = "attention check count"
-  static let TITLE_EXAMPLE_LEFT_BLINK_COUNT = "left only blink count"
-  static let TITLE_EXAMPLE_RIGHT_BLINK_COUNT = "right only blink count"
-  static let TITLE_EXAMPLE_BLINK_COUNT = "both blink count"
-  static let TITLE_EXAMPLE_EYE_OPENNESS = "everage eye Opennes"
+  static let TITLE_EXAMPLE_LEFT_EYE_CLOSE_TIME = "left eye closed time"
+  static let TITLE_EXAMPLE_RIGHT_EYE_CLOSE_TIME = "right eye closed time"
+  static let TITLE_EXAMPLE_BOTH_EYE_CLOSE_TIME = "both eyes closed time"
+  static let TITLE_EXAMPLE_LEFT_EYE_OPENNESS = "average left eye Opennes"
+  static let TITLE_EXAMPLE_RIGHT_EYE_OPENNESS = "average right eye Opennes"
 
 
   static let KEY_CALIBRATION_DATA = "KEY_CALIBRATION_DATA"

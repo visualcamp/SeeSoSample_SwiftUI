@@ -17,7 +17,7 @@
                BlueprintIdentifier = "63FB637327100D7E005B72BA"
                BuildableName = "SeeSoSample_SwiftUI.app"
                BlueprintName = "SeeSoSample_SwiftUI"
-               ReferencedContainer = "container:SeeSoSample_swiftUI.xcodeproj">
+               ReferencedContainer = "container:SeeSoSample_SwiftUI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "63FB637327100D7E005B72BA"
             BuildableName = "SeeSoSample_SwiftUI.app"
             BlueprintName = "SeeSoSample_SwiftUI"
-            ReferencedContainer = "container:SeeSoSample_swiftUI.xcodeproj">
+            ReferencedContainer = "container:SeeSoSample_SwiftUI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "63FB637327100D7E005B72BA"
             BuildableName = "SeeSoSample_SwiftUI.app"
             BlueprintName = "SeeSoSample_SwiftUI"
-            ReferencedContainer = "container:SeeSoSample_swiftUI.xcodeproj">
+            ReferencedContainer = "container:SeeSoSample_SwiftUI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

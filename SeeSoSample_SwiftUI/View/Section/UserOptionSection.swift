@@ -21,13 +21,14 @@ struct UserOptionSection: View {
         HStack {
           Text(SeeSoString.TITLE_USER_OPTION_BLINK)
           Spacer()
-          Text("\(model.userOptions.blinked ? SeeSoString.VALUE_USER_OPTION_BLINKED : SeeSoString.VALUE_USER_OPTION_OPENED)")
+          Text("\(model.userOptions.leftBlinked ? "Ȕ" : "Ȍ") _ \(model.userOptions.rightBlinked ? "Ű" : "Ő")")
         }
         HStack {
           Text(SeeSoString.TITLE_USER_OPTION_SLEEPY)
           Spacer()
           Text(model.userOptions.isSleepy ?  SeeSoString.VALUE_USER_OPTION_SLEEPY : SeeSoString.VALUE_USER_OPTION_NOT_SLEEPY)
-        }
+        }  
+        
         Toggle(SeeSoString.TITLE_USER_OPTION_DETAIL, isOn: $model.isDetailOptionOn)
       } label: {
         Text(SeeSoString.TITLE_USER_OPTION)

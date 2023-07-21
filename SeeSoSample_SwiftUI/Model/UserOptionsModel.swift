@@ -11,7 +11,8 @@ import Foundation
 struct UserOptionsModel {
   // Simple
   var recentAttentionScore: Int = 0
-  var blinked:Bool = false
+  var leftBlinked:Bool = false
+  var rightBlinked:Bool = false
   var isSleepy: Bool = false
   
   // Detailed figures
